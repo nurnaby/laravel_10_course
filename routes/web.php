@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LibraryController;
+use App\Http\Controllers\StudentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +17,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::controller(StudentsController::class)->group(function(){
+    Route::get('/students','AllStudent')->name('all.student');
+});
+
+Route::controller(LibraryController::class)->group(function(){
+Route::get('/library','index');
 });
